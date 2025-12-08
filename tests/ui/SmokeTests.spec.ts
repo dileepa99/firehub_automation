@@ -18,6 +18,7 @@ async function setSliderValue(page: Page, value: number) {
   const min = 0;
   const max = 100;
 
+  
   // calculate the target X based on track widths
   const percentage = (value - min) / (max - min);
   const targetX = trackBox.x + trackBox.width * percentage;
