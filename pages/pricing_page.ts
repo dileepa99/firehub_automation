@@ -22,6 +22,81 @@ export class PricingPage {
     return this.page.locator('[data-slot="slider-track"]');
   }
 
+  // CURATED BUNDLES HEADERS H3
+  get launchCard() {
+    return this.page.locator('div[data-slot="card"]').filter({
+      hasText: "Launch"
+    });
+  }
+  get launchTitle() {
+    return this.launchCard.getByRole("heading", { name: "Launch" });
+  }
+  get momentumCard() {
+    return this.page.locator('div[data-slot="card"]').filter({
+      hasText: "Momentum"
+    });
+  }
+  get momentumTitle() {
+    return this.momentumCard.getByRole("heading", { name: "Momentum" });
+  }
+  get accelerationCard() {
+    return this.page.locator('div[data-slot="card"]').filter({
+      hasText: "Acceleration"
+    });
+  }
+  get accelerationTitle() {
+    return this.accelerationCard.getByRole("heading", { name: "Acceleration" });
+  }
+
+  // CURATED BUNDLES PARAGRAPH DESCRIPTION
+getBundleDescriptionForLaunch(name: string) {
+  return this.page.locator(
+    `//div[@data-slot='card'][.//h3[normalize-space()='Launch']]//p[contains(@class,'text-muted-foreground')]`
+  );
+}
+getBundleDescriptionForMomentum(name: string) {
+  return this.page.locator(
+    `//div[@data-slot='card'][.//h3[normalize-space()='Momentum']]//p[contains(@class,'text-muted-foreground')]`
+  );
+}
+getBundleDescriptionForAcceleration(name: string) {
+  return this.page.locator(
+    `//div[@data-slot='card'][.//h3[normalize-space()='Acceleration']]//p[contains(@class,'text-muted-foreground')]`
+  );
+}
+
+// CUATED BUNDLE MONTHLY SUBSCRIPTION PRICES
+getBundlePreviousPriceForLaunch(name: string) {
+  return this.page.locator(
+    `//div[@data-slot='card'][.//h3[normalize-space()='Launch']]//div[@class='line-through' and contains(., 'Was $25/mo')]`
+  );
+}
+getBundleCurrentPriceForLaunch(name: string) {
+  return this.page.locator(
+    `//div[@data-slot='card'][.//h3[normalize-space()='Launch']]//span[@class='text-4xl font-bold leading-none' and contains(., '$23.50')]`
+  );
+}
+getBundlePreviousPricenForMomentum(name: string) {
+  return this.page.locator(
+    `//div[@data-slot='card'][.//h3[normalize-space()='Momentum']]//div[@class='line-through' and contains(., 'Was $27/mo')]`
+  );
+}
+getBundleCurrentPricenForMomentum(name: string) {
+  return this.page.locator(
+    `//div[@data-slot='card'][.//h3[normalize-space()='Momentum']]//span[@class='text-4xl font-bold leading-none' and contains(., '$25')]`
+  );
+}
+getBundlePreviousPriceForAcceleration(name: string) {
+  return this.page.locator(
+    `//div[@data-slot='card'][.//h3[normalize-space()='Acceleration']]//div[@class='line-through' and contains(.,'Was $33/mo')]`
+  );
+}
+getBundleCurrentPriceForAcceleration(name: string) {
+  return this.page.locator(
+    `//div[@data-slot='card'][.//h3[normalize-space()='Acceleration']]//span[@class='text-4xl font-bold leading-none' and contains(.,'$29')]`
+  );
+}
+
   // HEADER VALIDATION
   async verifyPricingHeaders() {
     await expect(this.headerPricingThat).toBeVisible();
