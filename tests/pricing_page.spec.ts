@@ -29,18 +29,9 @@ test("Pricing Page", async ({ page }) => {
   await pricing.setSliderValue(49);
   await pricing.verifySliderValue("0.98");
 
-  await expect(pricing.launchTitle).toBeVisible();
-  await expect(pricing.momentumTitle).toBeVisible();
-  await expect(pricing.accelerationTitle).toBeVisible();
+  await pricing.validateCuratedBundleTexts();
 
-  await expect(pricing.getBundleDescriptionForLaunch("Launch")).toBeVisible();
-  await expect(pricing.getBundleDescriptionForMomentum("Momentum")).toBeVisible();
-  await expect(pricing.getBundleDescriptionForAcceleration("Acceleration")).toBeVisible();
+  await pricing.navigateToComparisonPage();
 
-  await expect(pricing.getBundlePreviousPriceForLaunch("Launch")).toBeVisible();
-  await expect(pricing.getBundleCurrentPriceForLaunch("Launch")).toBeVisible();
-  await expect(pricing.getBundlePreviousPricenForMomentum("Momentum")).toBeVisible();
-  await expect(pricing.getBundleCurrentPricenForMomentum("Momentum")).toBeVisible();
-  await expect(pricing.getBundlePreviousPriceForAcceleration("Acceleration")).toBeVisible();
-  await expect(pricing.getBundleCurrentPriceForAcceleration("Acceleration")).toBeVisible();
+  await pricing.takeComparisonSectionScreenshot();
 });
