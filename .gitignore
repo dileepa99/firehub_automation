@@ -1,0 +1,9 @@
+# Playwright auto-generated folders
+playwright-report/
+test-results/
+
+# Node modules
+node_modules/
+
+# Environment
+.env
