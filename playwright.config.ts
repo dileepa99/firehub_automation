@@ -4,6 +4,7 @@ export default defineConfig({
   testDir: './tests',
   timeout: 30 * 1000, // 30 seconds
   retries: 0,
+  fullyParallel: false,
 
   use: {
     headless: true,
